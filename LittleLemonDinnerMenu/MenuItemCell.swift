@@ -4,7 +4,6 @@
 //
 //  Created by Trung Luu on 5/14/25.
 //
-
 import SwiftUI
 
 struct MenuItemCell: View {

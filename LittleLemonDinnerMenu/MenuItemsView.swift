@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MenuItemsView: View {
-    //TODO: Add ViewModel
-    //@StateObject private var vm = MenuViewViewModel()
+    @StateObject private var vm = MenuViewViewModel()
     @State private var showingOptions = false
 
     // adaptive 3-column grid
@@ -24,7 +23,11 @@ struct MenuItemsView: View {
                         .font(.title2).bold()
                         .padding(.horizontal)
                     LazyVGrid(columns: columns, spacing: 16) {
-                        //TODO: Add MenuItem
+                        ForEach(vm.foodItems) { item in
+                            NavigationLink(destination: MenuItemDetailsView(item: item)) {
+                                MenuItemCell(item: item)
+                            }
+                        }
                     }
                     .padding(.horizontal)
 
@@ -33,7 +36,11 @@ struct MenuItemsView: View {
                         .font(.title2).bold()
                         .padding(.horizontal)
                     LazyVGrid(columns: columns, spacing: 16) {
-                        //TODO: Add MenuItem
+                        ForEach(vm.drinkItems) { item in
+                            NavigationLink(destination: MenuItemDetailsView(item: item)) {
+                                MenuItemCell(item: item)
+                            }
+                        }
                     }
                     .padding(.horizontal)
 
@@ -42,7 +49,11 @@ struct MenuItemsView: View {
                         .font(.title2).bold()
                         .padding(.horizontal)
                     LazyVGrid(columns: columns, spacing: 16) {
-                        //TODO: Add MenuItem
+                        ForEach(vm.dessertItems) { item in
+                            NavigationLink(destination: MenuItemDetailsView(item: item)) {
+                                MenuItemCell(item: item)
+                            }
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -55,7 +66,9 @@ struct MenuItemsView: View {
                     Image(systemName: "slider.horizontal.3")
                 }
             }
-            .sheet(isPresented: $showingOptions) {}
+            .sheet(isPresented: $showingOptions) {
+                MenuItemsOptionView()
+            }
         }
     }
 }
