@@ -12,20 +12,22 @@ struct MenuItemDetailsView: View {
     var body: some View {
         VStack(spacing: 16) {
             // large logo or image placeholder
+            Text(item.title)
+                .font(.largeTitle).bold()
+            
             Image("LittleLemonLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 200)
+                .frame(height: 400)
 
-            Text(item.title)
-                .font(.largeTitle).bold()
-
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Price: \(item.price, specifier: "%.2f")")
-                Text("Ordered: \(item.ordersCount)")
-                Text("Ingredients:")
+            VStack(alignment: .center, spacing: 8) {
+                Text("Price:").bold()
+                Text("\(item.price, specifier: "%.2f")")
+                Text("Ordered:").bold()
+                Text("\(item.ordersCount)")
+                Text("Ingredients:").bold()
                 ForEach(item.ingredients, id: \.self) { ing in
-                    Text("• \(ing.rawValue)")
+                    Text("\(ing.rawValue)")
                 }
             }
             .font(.body)
