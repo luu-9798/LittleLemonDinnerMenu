@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuItemsView: View {
+    //TODO: Add ViewModel
     //@StateObject private var vm = MenuViewViewModel()
     @State private var showingOptions = false
 
@@ -22,21 +23,27 @@ struct MenuItemsView: View {
                     Text("Food")
                         .font(.title2).bold()
                         .padding(.horizontal)
-                    LazyVGrid(columns: columns, spacing: 16) {}
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        //TODO: Add MenuItem
+                    }
                     .padding(.horizontal)
 
                     // — Drinks Section —
                     Text("Drinks")
                         .font(.title2).bold()
                         .padding(.horizontal)
-                    LazyVGrid(columns: columns, spacing: 16) {}
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        //TODO: Add MenuItem
+                    }
                     .padding(.horizontal)
 
                     // — Dessert Section —
                     Text("Dessert")
                         .font(.title2).bold()
                         .padding(.horizontal)
-                    LazyVGrid(columns: columns, spacing: 16) {}
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        //TODO: Add MenuItem
+                    }
                     .padding(.horizontal)
                 }
                 .padding(.vertical)
