@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuItemCell: View {
-    //TODO: Add Menu Item
+    let item: MenuItem
 
     var body: some View {
         VStack {
@@ -17,6 +17,10 @@ struct MenuItemCell: View {
                 .fill(Color.gray.opacity(0.3))
                 .frame(height: 80)
                 .cornerRadius(8)
+
+            Text(item.title)
+                .font(.caption)
+                .multilineTextAlignment(.center)
         }
     }
 }
