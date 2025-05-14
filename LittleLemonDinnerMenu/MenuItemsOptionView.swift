@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct MenuItemsOptionView: View {
-    //TODO: Add Menu Item Category
+    @State private var selectedCategories: Set<MenuCategory> = [.food, .drink, .dessert]
     @State private var selectedSort: SortOption = .mostPopular
 
     enum SortOption: String, CaseIterable {
@@ -20,7 +20,16 @@ struct MenuItemsOptionView: View {
         NavigationView {
             Form {
                 Section(header: Text("SELECTED CATEGORIES")) {
-                    //TODO: Add Menu Item Category
+                    ForEach(MenuCategory.allCases, id: \.self) { cat in
+                        Toggle(cat.rawValue,
+                               isOn: Binding(
+                                   get: { selectedCategories.contains(cat) },
+                                   set: { isOn in
+                                       if isOn { selectedCategories.insert(cat) }
+                                       else     { selectedCategories.remove(cat) }
+                                   }
+                               ))
+                    }
                 }
 
                 Section(header: Text("SORT BY")) {
@@ -52,4 +61,3 @@ struct MenuItemsOptionView_Previews: PreviewProvider {
         MenuItemsOptionView()
     }
 }
-
